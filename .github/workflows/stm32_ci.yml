@@ -1,0 +1,70 @@
+## DO NOT EDIT!
+# This file was provisioned by Terraform
+# File origin: https://github.com/Arrow-air/tf-github/tree/main/src/templates/stm32-all/.github/workflows/stm32_ci.yml
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+    paths:
+      - src/**
+      - .env.repo
+
+name: STM32 Checks
+
+env:
+  TERM: xterm
+
+jobs:
+  build_and_test_debug:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, 'provisioned by terraform') }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        run: make build
+      - name: Test
+        run: make test
+
+  # fmt:
+  #   name: Format Checker
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make rust-fmt
+
+  # static:
+  #   name: Static Analysis
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: make static-analysis
+
+  # coverage:
+  #   name: Unit Test Coverage
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     NODE_COVERALLS_DEBUG: 1
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: |
+  #         mkdir -p coverage
+  #         make rust-coverage | tee coverage/ut.txt
+  #         echo UT_COV=$(sed '/||/,$!d' coverage/ut.txt) >> $GITHUB_ENV
+  #     - uses: coverallsapp/github-action@master
+  #       with:
+  #         github-token: ${{ secrets.github_token }}
+  #         path-to-lcov: coverage/lcov.info
+  #         base-path: .
+  #     - uses: thollander/actions-comment-pull-request@v1
+  #       continue-on-error: true
+  #       with:
+  #         message: |
+  #           :beetle: Unit Testing Coverage :mag_right:
+
+  #           ${{ env.UT_COV }}
+
+  #           :point_right: [View in Coveralls.io](https://coveralls.io/github/${{ github.repository }}) :point_left:
+  #         comment_includes: ':beetle: Unit Testing Coverage :mag_right:'
