@@ -5,8 +5,9 @@
 include .make/env.mk
 export
 
-help: .help-base .help-cspell .help-markdown .help-editorconfig .help-commitlint
+help: .help-base .help-cspell .help-markdown .help-editorconfig .help-commitlint .help-st
 build: stm32-build
+flash: stm32-flash
 clean: stm32-clean
 test: stm32-test cspell-test md-test-links editorconfig-test
 tidy: editorconfig-tidy
