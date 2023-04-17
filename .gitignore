@@ -1,9 +1,10 @@
 ## DO NOT EDIT!
 # This file was provisioned by Terraform
-# File origin: https://github.com/Arrow-air/tf-github/tree/main/src/templates/rust-svc/.env.base.tftpl
+# File origin: https://github.com/Arrow-air/tf-github/tree/main/src/templates/stm32-all/.env.base.tftpl
 
 CMakeCache.*
 CMakeFiles
 cmake_install.cmake
 *.swp
 build/
+.env
