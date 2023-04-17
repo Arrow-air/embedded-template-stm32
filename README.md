@@ -1,5 +1,11 @@
 # embedded-template-stm32
 
+<center>
+
+<img src="https://github.com/Arrow-air/tf-github/raw/main/src/templates/doc-icon-blue-navy.png" style="height:250px" />
+
+</center>
+
 *TODO:*
 1. Update all badges with the correct repository name.
 2. Replace `embedded-template-stm32` anywhere needed.
@@ -16,6 +22,8 @@ This is a template project.
 
 Directory:
 - `src/`: Project software
+- `hw/ecad`: PCB-related files
+- `hw/cad`: CAD files for enclosures, chassis, etc.
 - `docs/`: Module Documentation
 - `.env.repo`: Important environment variables
     - `STM32_MCU`: The board used for this project
@@ -27,7 +35,7 @@ Directory:
     # Only need to run once forever
     sudo ./udev.sh
 
-    # Replug in your board
+    # Plug in board
     ```
 2) Check the `STM32_MCU` variable in `.env.repo` and confirm that you are targeting the correct platform.
 
@@ -59,8 +67,7 @@ There are additional make targets available. You can find all possible targets b
 ## :books: Documentation
 The following documents are relevant to this project:
 - [Concept of Operations](./docs/conops.md)
-- [Software Design Document (SDD)](./docs/sdd.md)
-- [Interface Control Document (ICD)](./docs/icd.md)
+- :construction: Requirements
 
 ## :busts_in_silhouette: Arrow DAO
 Learn more about us:
