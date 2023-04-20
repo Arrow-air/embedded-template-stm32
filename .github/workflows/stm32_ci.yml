@@ -24,9 +24,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: make build
+        run: make stm32-build
       - name: Test
-        run: make test
+        run: make stm32-test
 
   # fmt:
   #   name: Format Checker
