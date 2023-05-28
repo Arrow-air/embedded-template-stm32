@@ -26,5 +26,3 @@ indent_size = 2
 # we might want to use https://www.npmjs.com/package/lintspaces instead, we can't lint the css and js comments atm
 [{*.js,*.css,Cargo.lock}]
 indent_size = unset
-[*.h]
-indent_size = 2
