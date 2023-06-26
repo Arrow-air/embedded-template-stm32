@@ -27,12 +27,14 @@ list(APPEND HAL_COMP_LIST ${STM32_COMPONENT})
 find_package(HAL COMPONENTS "${HAL_COMP_LIST}" REQUIRED)
 find_package(CMSIS COMPONENTS ${STM32_COMPONENT} REQUIRED)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
+set(CMAKE_EXE_LINKER_FLAGS "--specs=nosys.specs" CACHE INTERNAL "")
 
 set(PROJECT_SOURCES
     src/main.c
 )
 
 add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror)
 target_link_libraries(${PROJECT_NAME}
     CMSIS::STM32::${STM32_SERIES}
     CMSIS::STM32::$ENV{STM32_MCU}
